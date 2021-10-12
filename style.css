@@ -172,6 +172,10 @@ body {
     margin: 0;
 }
 
+::placeholder {
+    opacity: .5;
+}
+
 .output span {
     font-size: 1.4rem;
     display: inline-block;
