@@ -1,0 +1,305 @@
+:root {
+--cyan7: hsl(172, 67%, 45%);
+
+
+--color1: hsl(183, 100%, 15%);
+--color2: hsl(186, 14%, 43%);
+--color3: hsl(184, 14%, 56%);
+--color4: hsl(185, 41%, 84%);
+--color5: hsl(189, 41%, 97%);
+--color6: hsl(0, 0%, 100%);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    margin: 0;
+    font-size: 1.6rem;
+    font-family: 'Space Mono';
+    font-weight: 700;
+}
+
+.app {
+    background-color: var(--color4);
+}
+
+.active {
+    background-color: var(--cyan7) !important;
+    color:var(--color1) !important;
+}
+
+/* logo */
+.logo {
+    display: grid;
+    justify-content: center;
+}
+
+.logo img {
+    margin-top: 4.75rem;
+    margin-bottom: 4rem;
+}
+
+/* card */
+
+.card {
+    max-width: 100%;
+    background-color: #fff;
+    border-top-left-radius: 2.5rem;
+    border-top-right-radius: 2.5rem;
+    padding: 2.4rem;
+    color:var(--color2);
+}
+
+/* input */
+
+.input {
+    width: 100%;
+    padding: .8rem .8rem;
+}
+
+.input input {
+    width: 100%;
+    display: block;
+    background-color:var(--color5); 
+    background-blend-mode: multiply;
+    background-repeat: no-repeat;
+    background-position: 6.3% 55%;
+    text-align: right;
+    border: none;
+    padding: .6rem 1.9rem;
+    font-family: inherit;
+    font-size: 2.4rem;
+    font-weight: 600;
+    color:var(--color1);
+}
+
+::placeholder {
+    color: var(--color1);
+}
+
+#bill-inp {
+    background-image:url('/tip-app/images/icon-dollar.svg');
+    margin-top: .5999999rem;
+}
+
+/* tip container */
+.tip-container {
+    margin-top: 3.1rem;
+}
+
+.tips {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.6rem 1.7rem;
+    margin-top: 1.7rem;
+}
+
+.tip {
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    color: #fff;
+    font-size: 2.4rem;
+    font-weight: 700;
+    padding:.6rem 0;
+    border-radius: .5rem;
+}
+
+.tip-dark {
+    background-color:var(--color1);
+}
+
+#tip-inp {
+    padding: 0;
+    text-align: center;
+}
+
+/* people container */
+
+.people-container {
+    margin-top: 3.2rem;
+}
+
+.whatever {
+    display: flex;
+    justify-content: space-between;
+}
+
+.error-msg {
+    margin: 0;
+    color: indianred;
+}
+
+#ppl-inp {
+    margin-top: .5rem;
+    padding-right: 1.7rem;
+    background-position: 5.8% 50%;
+    background-image:url('/tip-app/images/icon-person.svg');
+}
+
+/* output */
+.output {
+    background-color: var(--color1);
+    margin-top: 2.6rem;
+    border-radius: 1.5rem;
+    padding: 2.3rem 2.4rem;
+}
+
+.output p {
+    color: #fff;
+    margin: 0;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.output .price,
+.output .price {
+    color:var(--cyan7);
+    font-size: 3.2rem;
+    align-self: center;
+    margin: 0;
+}
+
+.output span {
+    font-size: 1.4rem;
+    display: inline-block;
+    color: var(--color3);
+    font-size: 1.3rem;
+    margin: 0;
+}
+
+.btn {
+    width: 100%;
+    border: none;
+    background-color:var(--cyan7);
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--color1);
+    font-size: 2rem;
+    padding: 1.2em 0;
+    font-family: inherit;
+    line-height: 0;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background-color: var(--color4);
+    color:var(--color2);
+}
+
+.tip:hover, .btn:hover {
+    cursor: pointer;
+}
+
+.tip-person {
+    margin-bottom: 2rem;
+    padding-top: 1.6rem;
+}
+
+.total-person {
+    margin-bottom: 3rem;
+}
+
+/* xd */
+.disabled {
+    display: none;
+}
+
+/* media queries */
+
+
+
+
+
+
+/* 1440x900 */
+@media (min-width: 800px) {
+    .app {
+        height: 100vh;
+    }
+
+    .logo img {
+        margin-top: 16.2rem;
+        margin-bottom: 8.7rem;
+    }
+
+    .card {
+        max-width: 92rem;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 3.2rem 3.2rem 3.2rem 3rem;
+        gap: 2.9rem;
+        border-radius: 2.5rem;
+    }
+
+    .input {
+        padding: 1.3rem 1.8rem 1.7rem 1.8rem;
+    }
+
+    .input input {
+        padding: .6rem 1.7rem;
+        background-position: 5.1% 50%;
+    }
+
+    .tip-container {
+        margin-top: 4rem;
+    }
+
+    .tips {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 1.6rem 1.4rem;
+        margin-top: 1.6rem;
+    }
+
+    .people-container {
+        margin-top: 4rem;
+    }
+
+    #ppl-inp {
+        background-position: 4.6% 52%;
+    }
+
+    .output {
+        display: grid;
+        margin: 0rem 0rem 0rem 1px;
+        padding: 4rem 4rem 4rem 4rem;
+    }
+
+    .output-inner {
+        align-self:flex-start;
+    }
+
+    .tip-person {
+        padding-top: 1.6rem;
+    }
+
+    .total-person {
+        margin-top: 4.8rem;
+        margin-bottom: 0;
+    }
+
+    .price,
+    .price {
+        font-size: 4.5rem !important;
+        margin: 0;
+        line-height: 1;
+        align-self: flex-start;
+    }
+
+    .btn {
+        align-self:flex-end;
+    }
+}
