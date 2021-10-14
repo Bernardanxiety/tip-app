@@ -4,9 +4,13 @@ const pplInp = document.getElementById('ppl-inp');
 const tipBtns = document.querySelectorAll('.tip');
 const errorMsg = document.querySelector('.error-msg');
 const price = document.querySelectorAll('.price');
+const resetBtn = document.querySelector('.reset');
+
+resetBtn.addEventListener('click', reset);
 billInp.addEventListener('input', setBillValue);
 tipCustom.addEventListener('input', setCustomTipValue);
 pplInp.addEventListener('input', numOfPpl);
+
 
 
 let billValue = 0.0;
@@ -100,4 +104,17 @@ function calcPayments() {
         price[1].innerHTML = '$' + total.toFixed(2);
 
     }
+}
+
+function reset() {
+    billInp.value = '';
+    tipBtns[2].click();
+    pplInp.value = '';
+
+    billValue = '';
+    party = '';
+
+    price[0].innerHTML = '$0.00';
+    price[1].innerHTML = '$0.00';
+
 }
