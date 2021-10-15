@@ -18,57 +18,49 @@
   </style>
 </head>
 <body>
-  <section class="app">
-    <div class="logo">
-      <img id="logo" src="images/logo.svg" alt="app logo">
-    </div>
+  <section>
+    <img class="logo" src="images/logo.svg" alt="">
 
     <div class="card">
       <div class="input">
-        <div class="bill-container">
-          <label for="bill-inp">Bill</label>
-
-          <input type="text" id="bill-inp" name="bill-inp" placeholder="142.55">
+        <div class="bill">
+          <label for="bill">Bill
+            <input type="text" id="billInp" name="billInp" placeholder='142.55'>
+          </label>
         </div>
-        
-        <div class="tip-container">
-          <label for="tip-inp">Select Tip %</label>
+        <div class="tipz">
+          <p>Select Tip %</p>
           <div class="tips">
-            <div class="tip tip-dark">5%</div>
-            <div class="tip tip-dark">10%</div>
-            <div class="tip tip-dark active">15%</div>
-            <div class="tip tip-dark">25%</div>
-            <div class="tip tip-dark">50%</div>
-            <input type="text" name="tip-inp" id="tip-inp" placeholder="Custom">
+            <div class="tip">5%</div>
+            <div class="tip">10%</div>
+            <div class="tip active">15%</div>
+            <div class="tip">25%</div>
+            <div class="tip">50%</div>
+            <input type="text" placeholder='Custom' id="custom">
           </div>
         </div>
-
-        <div class="people-container">
-          <div class="whatever">
-            <label for="ppl-inp" class='ppl-inp'>Number of People</label>
-            <p class="error-msg">Can't be zero!</p>
-          </div>
-          <input type="text" id='ppl-inp' name='ppl-inp' placeholder='5'>
+        <div class="people">
+          <label for="party">Number of People
+            <input type="text" id="partyInp" name="partyInp" placeholder="5">
+          </label>
         </div>
       </div>
-  
+
       <div class="output">
-        <div class="output-inner">
+        <div class="payments">
           <div class="tip-person flex">
             <p>Tip Amount <br><span>/ person</span></p>
             <p class="price">$0.00</p>
           </div>
-
           <div class="total-person flex">
             <p>Total <br><span>/ person</span></p>
             <p class="price">$0.00</p>
           </div>
         </div>
-        <button class="btn reset">Reset</button>
+        <button class="reset">Reset</button>
       </div>
     </div>
   </section>
-
 
 
 
