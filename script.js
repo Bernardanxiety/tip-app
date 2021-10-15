@@ -1,120 +1,102 @@
-const billInp = document.getElementById('bill-inp');
-const tipCustom = document.getElementById('tip-inp');
-const pplInp = document.getElementById('ppl-inp');
+const billInp = document.getElementById('billInp');
 const tipBtns = document.querySelectorAll('.tip');
-const errorMsg = document.querySelector('.error-msg');
+const custom = document.getElementById('custom');
+const partyInp = document.getElementById('partyInp');
 const price = document.querySelectorAll('.price');
 const resetBtn = document.querySelector('.reset');
 
-resetBtn.addEventListener('click', reset);
 billInp.addEventListener('input', setBillValue);
-tipCustom.addEventListener('input', setCustomTipValue);
-pplInp.addEventListener('input', numOfPpl);
-
-
-
-let billValue = 0.0;
-let tipValue = .15;
-let party = 0;
-
-
-const validateFloat = s => {
-    let xd = /^[0-9]*\.?[0-9]*$/;
-    return s.match(xd);
-}
-
-const validateInt = s => {
-    let rgx = /^[0-9]*$/;
-    return s.match(rgx);
-}
-
-
-
-function setBillValue() {
-    if(billInp.value.includes(',')) {
-        billInp.value = billInp.value.replace(',', '.');
-    }
-
-    if(!validateFloat(billInp.value)) {
-        billInp.value = billInp.value.substring(0, billInp.value.length - 1);
-    }
-
-    billValue = parseFloat(billInp.value);
-    calcPayments();
-}
+custom.addEventListener('input', setCustomTip);
+partyInp.addEventListener('input', setParty);
+resetBtn.addEventListener('click', reset);
 
 for (let i=0; i<tipBtns.length; i++) {
     tipBtns[i].addEventListener('click', function() {
         if(tipBtns[i].classList.contains('active')) {
             tipBtns[i].classList.remove('active');
-            tipValue = 0.0;
-            tipCustom.value = '';
-            calcPayments();
-
+            tip = 0;
         }
         else {
             for (let j=0; j<tipBtns.length; j++) {
                 tipBtns[j].classList.remove('active');
             }
             tipBtns[i].classList.add('active');
-            tipCustom.value = '';
-            tipValue = parseFloat(tipBtns[i].innerHTML)/100;
-            calcPayments();
+            tip = tipBtns[i].innerHTML;
+            tip = parseFloat(tip)/100;
         }
-    })
+        custom.value = '';
+        calcPayments();
+    });
 }
 
-function numOfPpl() {
-    if(!validateInt(pplInp.value)) {
-        pplInp.value = pplInp.value.substring(0, pplInp.value.length-1);
+
+let bill = '';
+let tip = .15;
+let party = 0;
+
+
+function validate(s) {
+    var rgx = /^[0-9]*\.?[0-9]*$/
+    return s.match(rgx);
+}
+
+function validateCustom(s) {
+    var rgx = /^[0-9]*$/
+    return s.match(rgx);
+}
+
+function setBillValue() {
+    if(billInp.value.includes(',')) {
+        billInp.value = billInp.value.replace(',', '.');
     }
 
-    if(pplInp.value != '' || pplInp.value !== 0) {
-        errorMsg.classList.add('disabled');
+    if(!validate(billInp.value)) {
+        billInp.value = billInp.value.substring(0, billInp.value.length - 1);
     }
 
-    if(pplInp.value == '' || pplInp.value == 0) {
-        errorMsg.classList.remove('disabled');
-    }
-    party = parseFloat(pplInp.value);
+    
+    bill = parseFloat(billInp.value*100/100);
+
+    
     calcPayments();
 }
 
-
-function setCustomTipValue(){
-    if(!validateInt(tipCustom.value)) {
-        tipCustom.value = tipCustom.value.substring(0, tipCustom.value.length-1);
+function setCustomTip() {
+    for (let i=0; i<tipBtns.length; i++) {
+        tipBtns[i].classList.remove('active');
     }
-    for (let j=0; j<tipBtns.length; j++) {
-        tipBtns[j].classList.remove('active');
-    }
-    console.log(tipValue);
-    
 
-    tipValue = parseFloat(tipCustom.value)/100;
+    if(!validateCustom(custom.value)) {
+        custom.value = custom.value.substring(0, custom.value.length - 1);
+    }
+    tip = parseFloat(custom.value/100);
+    calcPayments();
+}
+
+function setParty() {
+    if(!validateCustom(partyInp.value)) {
+        partyInp.value = partyInp.value.substring(0, partyInp.value.length - 1);
+    }
+    party = parseFloat(partyInp.value/100*100);
     calcPayments();
 }
 
 function calcPayments() {
     if(party >= 1) {
-        let tipAmount = billValue * tipValue / party;
-        let total = billValue / party + tipAmount;
-
-        price[0].innerHTML = '$' + tipAmount.toFixed(2);
-        price[1].innerHTML = '$' + total.toFixed(2);
-
+        let tipValue = bill / party * tip;
+        let totalValue = bill / party + tipValue;
+    
+        price[0].innerHTML = '$' + tipValue.toFixed(2);
+        price[1].innerHTML = '$' + totalValue.toFixed(2);
     }
+    
 }
 
 function reset() {
     billInp.value = '';
-    pplInp.value = '';
-
-    billValue = '';
-    party = '';
-
-    price[0].innerHTML = '$0.00';
-    price[1].innerHTML = '$0.00';
+    setBillValue();
+    partyInp.value = '';
+    setParty();
+    calcPayments();
     tipBtns[2].click();
-
 }
