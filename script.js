@@ -12,18 +12,17 @@ resetBtn.addEventListener('click', reset);
 
 for (let i=0; i<tipBtns.length; i++) {
     tipBtns[i].addEventListener('click', function() {
-        if(tipBtns[i].classList.contains('active')) {
-            tipBtns[i].classList.remove('active');
-            tip = 0;
-        }
-        else {
+        // if(tipBtns[i].classList.contains('active')) {
+        //     tipBtns[i].classList.remove('active');
+        //     tip = 0;
+        // }
+        
             for (let j=0; j<tipBtns.length; j++) {
                 tipBtns[j].classList.remove('active');
             }
             tipBtns[i].classList.add('active');
             tip = tipBtns[i].innerHTML;
             tip = parseFloat(tip)/100;
-        }
         custom.value = '';
         calcPayments();
     });
