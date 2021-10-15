@@ -108,7 +108,6 @@ function calcPayments() {
 
 function reset() {
     billInp.value = '';
-    tipBtns[2].click();
     pplInp.value = '';
 
     billValue = '';
@@ -116,5 +115,6 @@ function reset() {
 
     price[0].innerHTML = '$0.00';
     price[1].innerHTML = '$0.00';
+    tipBtns[2].click();
 
 }
